@@ -1,5 +1,6 @@
-tensorflow
+minio
 pymongo
 pandas
-numpy
-minio
+tensorflowjs
+scikit-learn
+pika
