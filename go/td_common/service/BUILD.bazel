@@ -1,0 +1,34 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "service",
+    srcs = [
+        "auth_service.go",
+        "dataset_service.go",
+        "encryption_service.go",
+        "exporter_service.go",
+        "exportrun_service.go",
+        "model_service.go",
+        "publish_service.go",
+        "request_service.go",
+        "storage_service.go",
+        "trainingrun_service.go",
+        "user_service.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/service",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/extractor",
+        "//go/td_common/message",
+        "//go/td_common/model",
+        "//go/td_common/payload",
+        "//go/td_common/queue",
+        "//go/td_common/storage",
+        "@com_github_google_uuid//:uuid",
+        "@com_github_minio_minio_go_v7//:minio-go",
+        "@com_github_sirupsen_logrus//:logrus",
+        "@com_github_streadway_amqp//:amqp",
+        "@org_golang_x_crypto//bcrypt",
+    ],
+)

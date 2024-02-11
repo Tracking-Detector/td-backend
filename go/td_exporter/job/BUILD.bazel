@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "job",
+    srcs = ["export_job.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_exporter/job",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/extractor",
+        "//go/td_common/model",
+        "//go/td_common/service",
+        "//go/td_exporter/converter",
+        "@com_github_robertkrimen_otto//:otto",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

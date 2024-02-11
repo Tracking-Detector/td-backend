@@ -1,0 +1,23 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "cmd_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dataset/cmd",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/repository",
+        "//go/td_common/service",
+        "//go/td_common/util",
+        "//go/td_dataset/controller",
+        "//go/td_dataset/job",
+        "@com_github_robfig_cron//:cron",
+    ],
+)
+
+go_binary(
+    name = "cmd",
+    embed = [":cmd_lib"],
+    visibility = ["//visibility:public"],
+)

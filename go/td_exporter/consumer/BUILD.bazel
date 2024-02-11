@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "consumer",
+    srcs = ["export_message_consumer.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_exporter/consumer",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/message",
+        "//go/td_common/model",
+        "//go/td_common/queue",
+        "//go/td_common/service",
+        "//go/td_exporter/job",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

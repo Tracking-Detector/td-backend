@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "job",
+    srcs = ["dataset_metrics_calculation_job.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dataset/job",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/model",
+        "//go/td_common/service",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

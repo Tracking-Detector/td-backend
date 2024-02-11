@@ -1,0 +1,16 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "extractor",
+    srcs = [
+        "feature_extractor.go",
+        "feature_extractor_definitions.go",
+        "utils.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/extractor",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/model",
+        "@org_mongodb_go_mongo_driver//bson",
+    ],
+)

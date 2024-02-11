@@ -1,0 +1,9 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "converter",
+    srcs = ["request_converter.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_exporter/converter",
+    visibility = ["//visibility:public"],
+    deps = ["//go/td_common/model"],
+)

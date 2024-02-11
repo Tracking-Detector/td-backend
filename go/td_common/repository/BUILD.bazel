@@ -1,0 +1,25 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "repository",
+    srcs = [
+        "dataset_repository.go",
+        "exporter_repository.go",
+        "exporter_run_repository.go",
+        "model_repository.go",
+        "request_repository.go",
+        "training_run_repository.go",
+        "user_repository.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/repository",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/model",
+        "//go/td_common/mongostore",
+        "@org_mongodb_go_mongo_driver//bson",
+        "@org_mongodb_go_mongo_driver//bson/primitive",
+        "@org_mongodb_go_mongo_driver//mongo",
+        "@org_mongodb_go_mongo_driver//mongo/options",
+    ],
+)

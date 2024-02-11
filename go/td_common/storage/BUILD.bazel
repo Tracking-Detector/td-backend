@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "storage",
+    srcs = [
+        "adapter.go",
+        "minio.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/storage",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_minio_minio_go_v7//:minio-go"],
+)

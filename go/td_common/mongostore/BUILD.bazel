@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mongostore",
+    srcs = ["datastore.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/mongostore",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/model",
+        "@com_github_google_uuid//:uuid",
+        "@org_mongodb_go_mongo_driver//bson",
+        "@org_mongodb_go_mongo_driver//mongo",
+        "@org_mongodb_go_mongo_driver//mongo/options",
+    ],
+)

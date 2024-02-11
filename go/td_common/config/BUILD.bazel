@@ -1,0 +1,19 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "config",
+    srcs = [
+        "env.go",
+        "setup.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/config",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_minio_minio_go_v7//:minio-go",
+        "@com_github_minio_minio_go_v7//pkg/credentials",
+        "@com_github_sirupsen_logrus//:logrus",
+        "@com_github_streadway_amqp//:amqp",
+        "@org_mongodb_go_mongo_driver//mongo",
+        "@org_mongodb_go_mongo_driver//mongo/options",
+    ],
+)

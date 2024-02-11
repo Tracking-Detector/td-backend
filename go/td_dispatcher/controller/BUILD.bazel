@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "controller",
+    srcs = ["dispatch_controller.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dispatcher/controller",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/response",
+        "//go/td_common/service",
+        "//go/td_common/util",
+        "//go/td_exporter/converter",
+        "@com_github_gofiber_fiber_v2//:fiber",
+    ],
+)

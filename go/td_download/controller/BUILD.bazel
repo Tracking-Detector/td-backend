@@ -1,0 +1,16 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "controller",
+    srcs = ["download_controller.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_download/controller",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/response",
+        "//go/td_common/service",
+        "//go/td_common/util",
+        "@com_github_gofiber_fiber_v2//:fiber",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)
