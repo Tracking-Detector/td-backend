@@ -10,9 +10,9 @@ class TrainingRun:
     Time: str
     F1Train: float
     F1Test: float
-    TrainingHistory: Dict[str, str] = field(default_factory=dict)
     BatchSize: int
     Epochs: int
+    TrainingHistory: Dict[str, str]
 
     def to_json(self):
         return {

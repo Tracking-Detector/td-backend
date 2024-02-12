@@ -1,4 +1,4 @@
-from pymongo import Collection
+from pymongo.collection import Collection
 from dataclasses import asdict
 
 class BaseRepository:

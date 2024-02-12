@@ -4,3 +4,6 @@ pandas
 tensorflowjs
 scikit-learn
 pika
+# Test
+testcontainers
+pytest

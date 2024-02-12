@@ -4,7 +4,7 @@ import unittest
 class TestDataset(unittest.TestCase):
     def test_dataset_serial(self):
         # given
-        dataset = Dataset("id", "name", "label", "description")
+        dataset = Dataset(ID="id", Name="name", Label="label", Description="description")
         # when
         dataset_json = dataset.to_json()
         # then

@@ -5087,7 +5087,7 @@
       "os:osx,arch:aarch64": {
         "bzlTransitiveDigest": "CFOsaAaCaXAWdIoUtiJE1hHRClAzoxc6eOJnclSty7M=",
         "accumulatedFileDigests": {
-          "@@//python:requirements_lock.txt": "c2aa0fbf842f5a0b9bc9eff3f6ed222b28d940fa12a6cc716aa48f8c6e45a82d"
+          "@@//python:requirements_lock.txt": "6d26911e2b595fb9d625ac4c75ee7573c4fb5d98001f8c46a1c7e5fa7df308ee"
         },
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -5595,6 +5595,30 @@
               "group_deps": []
             }
           },
+          "pypi_311_pluggy": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_pluggy",
+              "requirement": "pluggy==1.4.0     --hash=sha256:7db9f7b503d67d1c5b95f59773ebb58a8c1c288129a88665838012cfb07b8981     --hash=sha256:8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
           "pypi_311_markdown_it_py": {
             "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
             "ruleClassName": "whl_library",
@@ -5721,6 +5745,30 @@
             "attributes": {
               "name": "rules_python~0.28.0~pip~pypi_311_orbax_checkpoint",
               "requirement": "orbax-checkpoint==0.4.4     --hash=sha256:85ab96268b3f39e83809254cb3d55aa5a47c2279d7d3e725bd5f7c2da10a4de9     --hash=sha256:e356288d7f62b30519b20ae3c0584743d6598234e4996b4c15bbbd32c13c1f04",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
+          "pypi_311_deprecation": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_deprecation",
+              "requirement": "deprecation==2.1.0     --hash=sha256:72b3bde64e5d778694b0cf68178aed03d15e15477116add3fb773e581f9518ff     --hash=sha256:a10811591210e1fb0e768a8c25517cabeabcba6f0bf96564f8ff45189f90b14a",
               "repo": "pypi_311",
               "repo_prefix": "pypi_311_",
               "whl_patches": {},
@@ -5979,12 +6027,60 @@
               "group_deps": []
             }
           },
+          "pypi_311_pytest": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_pytest",
+              "requirement": "pytest==8.0.0     --hash=sha256:249b1b0864530ba251b7438274c4d251c58d868edaaec8762893ad4a0d71c36c     --hash=sha256:50fb9cbe836c3f20f0dfa99c565201fb75dc54c8d76373cd1bde06b06657bdb6",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
           "pypi_311_requests": {
             "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
             "ruleClassName": "whl_library",
             "attributes": {
               "name": "rules_python~0.28.0~pip~pypi_311_requests",
               "requirement": "requests==2.31.0     --hash=sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f     --hash=sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
+          "pypi_311_testcontainers": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_testcontainers",
+              "requirement": "testcontainers==3.7.1     --hash=sha256:7f48cef4bf0ccd78f1a4534d4b701a003a3bace851f24eae58a32f9e3f0aeba0",
               "repo": "pypi_311",
               "repo_prefix": "pypi_311_",
               "whl_patches": {},
@@ -6555,6 +6651,30 @@
               "group_deps": []
             }
           },
+          "pypi_311_iniconfig": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_iniconfig",
+              "requirement": "iniconfig==2.0.0     --hash=sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3     --hash=sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
           "pypi_311_setuptools": {
             "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
             "ruleClassName": "whl_library",
@@ -7006,7 +7126,13 @@
                 "chex": [
                   "3.11.6"
                 ],
+                "deprecation": [
+                  "3.11.6"
+                ],
                 "dnspython": [
+                  "3.11.6"
+                ],
+                "docker": [
                   "3.11.6"
                 ],
                 "etils": [
@@ -7043,6 +7169,9 @@
                   "3.11.6"
                 ],
                 "importlib_resources": [
+                  "3.11.6"
+                ],
+                "iniconfig": [
                   "3.11.6"
                 ],
                 "jax": [
@@ -7108,6 +7237,9 @@
                 "pika": [
                   "3.11.6"
                 ],
+                "pluggy": [
+                  "3.11.6"
+                ],
                 "protobuf": [
                   "3.11.6"
                 ],
@@ -7127,6 +7259,9 @@
                   "3.11.6"
                 ],
                 "pymongo": [
+                  "3.11.6"
+                ],
+                "pytest": [
                   "3.11.6"
                 ],
                 "python_dateutil": [
@@ -7193,6 +7328,9 @@
                   "3.11.6"
                 ],
                 "termcolor": [
+                  "3.11.6"
+                ],
+                "testcontainers": [
                   "3.11.6"
                 ],
                 "tf_keras": [
@@ -7262,6 +7400,30 @@
             "attributes": {
               "name": "rules_python~0.28.0~pip~pypi_311_absl_py",
               "requirement": "absl-py==2.1.0     --hash=sha256:526a04eadab8b4ee719ce68f204172ead1027549089702d99b9059f129ff1308     --hash=sha256:7820790efbb316739cde8b4e19357243fc3608a152024288513dd968d7d959ff",
+              "repo": "pypi_311",
+              "repo_prefix": "pypi_311_",
+              "whl_patches": {},
+              "experimental_target_platforms": [],
+              "python_interpreter": "",
+              "python_interpreter_target": "@@rules_python~0.28.0~python~python_3_11_aarch64-apple-darwin//:bin/python3",
+              "quiet": true,
+              "timeout": 600,
+              "isolated": true,
+              "extra_pip_args": [],
+              "download_only": false,
+              "pip_data_exclude": [],
+              "enable_implicit_namespace_pkgs": false,
+              "environment": {},
+              "group_name": "",
+              "group_deps": []
+            }
+          },
+          "pypi_311_docker": {
+            "bzlFile": "@@rules_python~0.28.0//python/pip_install:pip_repository.bzl",
+            "ruleClassName": "whl_library",
+            "attributes": {
+              "name": "rules_python~0.28.0~pip~pypi_311_docker",
+              "requirement": "docker==7.0.0     --hash=sha256:12ba681f2777a0ad28ffbcc846a69c31b4dfd9752b47eb425a274ee269c5e14b     --hash=sha256:323736fb92cd9418fc5e7133bc953e11a9da04f4483f828b527db553f1e7e5a3",
               "repo": "pypi_311",
               "repo_prefix": "pypi_311_",
               "whl_patches": {},

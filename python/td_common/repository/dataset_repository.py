@@ -1,4 +1,4 @@
-from pymongo import Database
+from pymongo.database import Database
 
 from python.td_common.repository.base_repository import BaseRepository
 from python.td_common.model.dataset import Dataset

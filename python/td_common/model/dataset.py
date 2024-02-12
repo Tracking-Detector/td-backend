@@ -45,10 +45,10 @@ class DataSetMetrics:
 
 @dataclass
 class Dataset:
+    Name: str  # Required argument
+    Description: str  # Required argument
     ID: Optional[str] = None
-    Name: str
-    Label: Optional[str] = None
-    Description: str
+    Label: Optional[str] = None  # Optional argument with default value
     Metrics: Optional[DataSetMetrics] = None
 
     def to_json(self):
