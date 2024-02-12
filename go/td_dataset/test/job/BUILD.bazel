@@ -1,0 +1,14 @@
+load("@rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "job_test",
+    srcs = ["dataset_metrics_calculation_job_test.go"],
+    data = glob(["testdata/**"]),
+    deps = [
+        "//go/td_common/model",
+        "//go/td_common/test/mocks",
+        "//go/td_common/test/testsupport",
+        "//go/td_dataset/job",
+        "@com_github_stretchr_testify//suite",
+    ],
+)
