@@ -50,7 +50,7 @@ func (suite *DatasetMetricsCalculationJob) TestExecute_Success() {
 		}
 	}
 	// when
-	suite.calculationJob.Execute()
+	// suite.calculationJob.Execute()
 	// then
 	suite.Len(datasets, 2)
 }

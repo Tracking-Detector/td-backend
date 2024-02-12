@@ -5,4 +5,8 @@ compile_pip_requirements(
     src = "requirements.in",
     requirements_txt = "requirements_lock.txt",
     requirements_windows = "requirements_windows.txt",
+    extra_args = [
+        "--quiet",
+    ],
 )
+
