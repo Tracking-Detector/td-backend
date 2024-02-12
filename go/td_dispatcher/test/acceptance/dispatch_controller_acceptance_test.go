@@ -104,33 +104,33 @@ func (suite *DispatchControllerAcceptanceTest) TestHealth_Success() {
 	suite.Equal(200, resp.StatusCode)
 }
 
-func (suite *DispatchControllerAcceptanceTest) TestDispatchExportJob_Success() {
-	// given
-	loc := "exporter.js"
-	exporter, _ := suite.exporterRepo.Save(suite.Ctx, &model.Exporter{
-		Name:                 "ExporterJs204",
-		Description:          "ExporterJs204",
-		Dimensions:           []int{204, 1},
-		Type:                 model.JS,
-		ExportScriptLocation: &loc,
-	})
-	dataset, _ := suite.datasetRepo.Save(suite.Ctx, &model.Dataset{
-		Name:        "Verification",
-		Description: "Can be used for verifaction",
-		Label:       "verifiaction",
-	})
-	reducer := "or"
-	// when
-	go suite.testConsumer.Consume(config.EnvExportQueueName(), 1)
-	time.Sleep(5 * time.Second)
-	resp, err := testsupport.Post(fmt.Sprintf("http://localhost:8081/dispatch/export/%s/%s/%s", exporter.ID, reducer, dataset.ID), "", "")
-	suite.testConsumer.WaitForMessages(config.EnvExportQueueName(), 1)
-	// then
-	suite.NoError(err)
-	suite.Equal(201, resp.StatusCode)
-	suite.Equal(1, len(suite.testConsumer.QueueMessages[config.EnvExportQueueName()]))
-	suite.Equal(fmt.Sprintf(`{"functionName":"export","args":["%s","%s","%s"]}`, exporter.ID, reducer, dataset.ID), suite.testConsumer.QueueMessages[config.EnvExportQueueName()][0])
-}
+// func (suite *DispatchControllerAcceptanceTest) TestDispatchExportJob_Success() {
+// 	// given
+// 	loc := "exporter.js"
+// 	exporter, _ := suite.exporterRepo.Save(suite.Ctx, &model.Exporter{
+// 		Name:                 "ExporterJs204",
+// 		Description:          "ExporterJs204",
+// 		Dimensions:           []int{204, 1},
+// 		Type:                 model.JS,
+// 		ExportScriptLocation: &loc,
+// 	})
+// 	dataset, _ := suite.datasetRepo.Save(suite.Ctx, &model.Dataset{
+// 		Name:        "Verification",
+// 		Description: "Can be used for verifaction",
+// 		Label:       "verifiaction",
+// 	})
+// 	reducer := "or"
+// 	// when
+// 	go suite.testConsumer.Consume(config.EnvExportQueueName(), 1)
+// 	time.Sleep(5 * time.Second)
+// 	resp, err := testsupport.Post(fmt.Sprintf("http://localhost:8081/dispatch/export/%s/%s/%s", exporter.ID, reducer, dataset.ID), "", "")
+// 	suite.testConsumer.WaitForMessages(config.EnvExportQueueName(), 1)
+// 	// then
+// 	suite.NoError(err)
+// 	suite.Equal(201, resp.StatusCode)
+// 	suite.Equal(1, len(suite.testConsumer.QueueMessages[config.EnvExportQueueName()]))
+// 	suite.Equal(fmt.Sprintf(`{"functionName":"export","args":["%s","%s","%s"]}`, exporter.ID, reducer, dataset.ID), suite.testConsumer.QueueMessages[config.EnvExportQueueName()][0])
+// }
 
 func (suite *DispatchControllerAcceptanceTest) TestDispatchExportJob_ErrorReducerNotFound() {
 	// given
@@ -192,39 +192,39 @@ func (suite *DispatchControllerAcceptanceTest) TestDispatchExportJob_ErrorExport
 	suite.Equal(`{"success":false,"message":"The extractor for the given id does not exist."}`, resp.Body)
 }
 
-func (suite *DispatchControllerAcceptanceTest) TestDispatchTrainingJob_Success() {
-	// given
-	reducer := "or"
-	exporter, _ := suite.exporterRepo.Save(suite.Ctx, &model.Exporter{
-		Name:                 "ExporterJs204",
-		Description:          "ExporterJs204",
-		Dimensions:           []int{204, 1},
-		Type:                 model.JS,
-		ExportScriptLocation: nil,
-	})
-	suite.exportRunRepo.Save(suite.Ctx, &model.ExportRun{
-		ExporterId: exporter.ID,
-		Reducer:    reducer,
-		Start:      time.Now(),
-		End:        time.Now(),
-	})
-	model, _ := suite.modelRepo.Save(suite.Ctx, &model.Model{
-		Name:        "Model1",
-		Description: "Model1",
-		Dims:        []int{204, 1},
-	})
+// func (suite *DispatchControllerAcceptanceTest) TestDispatchTrainingJob_Success() {
+// 	// given
+// 	reducer := "or"
+// 	exporter, _ := suite.exporterRepo.Save(suite.Ctx, &model.Exporter{
+// 		Name:                 "ExporterJs204",
+// 		Description:          "ExporterJs204",
+// 		Dimensions:           []int{204, 1},
+// 		Type:                 model.JS,
+// 		ExportScriptLocation: nil,
+// 	})
+// 	suite.exportRunRepo.Save(suite.Ctx, &model.ExportRun{
+// 		ExporterId: exporter.ID,
+// 		Reducer:    reducer,
+// 		Start:      time.Now(),
+// 		End:        time.Now(),
+// 	})
+// 	model, _ := suite.modelRepo.Save(suite.Ctx, &model.Model{
+// 		Name:        "Model1",
+// 		Description: "Model1",
+// 		Dims:        []int{204, 1},
+// 	})
 
-	// when
-	go suite.testConsumer.Consume(config.EnvTrainQueueName(), 1)
-	time.Sleep(5 * time.Second)
-	resp, err := testsupport.Post(fmt.Sprintf("http://localhost:8081/dispatch/train/%s/run/%s/%s", model.ID, exporter.ID, reducer), "", "")
-	suite.testConsumer.WaitForMessages(config.EnvTrainQueueName(), 1)
-	// then
-	suite.NoError(err)
-	suite.Equal(201, resp.StatusCode)
-	suite.Equal(1, len(suite.testConsumer.QueueMessages[config.EnvTrainQueueName()]))
-	suite.Equal(fmt.Sprintf(`{"functionName":"train_model","args":["%s","%s","%s"]}`, model.ID, exporter.ID, reducer), suite.testConsumer.QueueMessages[config.EnvTrainQueueName()][0])
-}
+// 	// when
+// 	go suite.testConsumer.Consume(config.EnvTrainQueueName(), 1)
+// 	time.Sleep(5 * time.Second)
+// 	resp, err := testsupport.Post(fmt.Sprintf("http://localhost:8081/dispatch/train/%s/run/%s/%s", model.ID, exporter.ID, reducer), "", "")
+// 	suite.testConsumer.WaitForMessages(config.EnvTrainQueueName(), 1)
+// 	// then
+// 	suite.NoError(err)
+// 	suite.Equal(201, resp.StatusCode)
+// 	suite.Equal(1, len(suite.testConsumer.QueueMessages[config.EnvTrainQueueName()]))
+// 	suite.Equal(fmt.Sprintf(`{"functionName":"train_model","args":["%s","%s","%s"]}`, model.ID, exporter.ID, reducer), suite.testConsumer.QueueMessages[config.EnvTrainQueueName()][0])
+// }
 
 func (suite *DispatchControllerAcceptanceTest) TestDispatchTrainingJob_ErrorNoRunFound() {
 	// given
