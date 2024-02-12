@@ -1,0 +1,11 @@
+load("@rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "converter_test",
+    srcs = ["request_converter_test.go"],
+    deps = [
+        "//go/td_common/model",
+        "//go/td_exporter/converter",
+        "@com_github_stretchr_testify//suite",
+    ],
+)

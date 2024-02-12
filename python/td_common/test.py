@@ -1,11 +1,11 @@
 import unittest
 
-import main
+import td_common
 
 
 class ExampleTest(unittest.TestCase):
     def test_main(self):
-        self.assertEqual(4, main.add(2,2))
+        self.assertEqual(4, td_common.add(2,2))
 
 
 if __name__ == "__main__":

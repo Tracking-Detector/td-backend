@@ -1,0 +1,28 @@
+load("@rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "service_test",
+    srcs = [
+        "auth_service_test.go",
+        "encryption_service_test.go",
+        "exporter_service_test.go",
+        "model_service_test.go",
+        "publish_service_test.go",
+        "request_service_test.go",
+        "storage_service_test.go",
+        "trainingrun_service_test.go",
+        "user_service_test.go",
+    ],
+    deps = [
+        "//go/td_common/message",
+        "//go/td_common/model",
+        "//go/td_common/payload",
+        "//go/td_common/service",
+        "//go/td_common/test/mocks",
+        "@com_github_minio_minio_go_v7//:minio-go",
+        "@com_github_streadway_amqp//:amqp",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//suite",
+        "@org_golang_x_crypto//bcrypt",
+    ],
+)
