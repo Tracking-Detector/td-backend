@@ -13,6 +13,7 @@ go_test(
         "trainingrun_service_test.go",
         "user_service_test.go",
     ],
+    data = glob(["testdata/**"]),
     deps = [
         "//go/td_common/message",
         "//go/td_common/model",

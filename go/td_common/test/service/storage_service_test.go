@@ -59,7 +59,7 @@ func (suite *StorageServiceTest) TestVerifyBucketExists_CreateBucketSuccess() {
 func (suite *StorageServiceTest) TestDownloadFile_Success() {
 	// given
 	fileUri := "exporter.js"
-	file, err := os.Open("../resources/example.js")
+	file, err := os.Open("./testdata/example.js")
 	suite.minioAdapter.On("GetObject", mock.Anything, "bucketName", fileUri, mock.AnythingOfType("minio.GetObjectOptions")).Return(file, nil)
 
 	// when
@@ -114,7 +114,7 @@ func (suite *StorageServiceTest) TestPutObject_Error() {
 func (suite *StorageServiceTest) TestGetObject_Success() {
 	// given
 	fileName := "example.js"
-	file, err := os.Open("../resources/example.js")
+	file, err := os.Open("./testdata/example.js")
 	suite.minioAdapter.On("GetObject", mock.Anything, "bucketName", fileName, mock.AnythingOfType("minio.GetObjectOptions")).Return(file, nil)
 
 	// when
