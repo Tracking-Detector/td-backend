@@ -37,7 +37,7 @@ func (suite *RequestControllerAcceptanceTest) SetupSuite() {
 	suite.requestController = controller.NewRequestController(suite.requestService)
 	go func() {
 		suite.app = util.DefaultFiberApp()
-		suite.requestController.RegisterRoutes(suite.app).Listen(":8081")
+		suite.requestController.RegisterRoutes(suite.app).Listen(":8087")
 
 	}()
 	time.Sleep(5 * time.Second)
@@ -56,7 +56,7 @@ func (suite *RequestControllerAcceptanceTest) TestHealth_Success() {
 	// given
 
 	// when
-	resp, err := testsupport.Get("http://localhost:8081/requests/health")
+	resp, err := testsupport.Get("http://localhost:8087/requests/health")
 
 	// then
 	suite.NoError(err)
@@ -253,7 +253,7 @@ func (suite *RequestControllerAcceptanceTest) TestCreateRequest_Success() {
     }`
 
 	// when
-	resp, err := testsupport.Post("http://localhost:8081/requests", request, "application/json")
+	resp, err := testsupport.Post("http://localhost:8087/requests", request, "application/json")
 
 	// then
 	suite.NoError(err)

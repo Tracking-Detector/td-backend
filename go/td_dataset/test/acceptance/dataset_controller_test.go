@@ -43,7 +43,7 @@ func (suite *DatasetControllerAcceptanceTest) SetupSuite() {
 	suite.datasetController = controller.NewDatasetController(suite.datasetService)
 	go func() {
 		suite.app = util.DefaultFiberApp()
-		suite.datasetController.RegisterRoutes(suite.app).Listen(":8081")
+		suite.datasetController.RegisterRoutes(suite.app).Listen(":8080")
 	}()
 	time.Sleep(5 * time.Second)
 }
@@ -76,7 +76,7 @@ func (suite *DatasetControllerAcceptanceTest) TestHealth_Success() {
 	// given
 
 	// when
-	resp, err := testsupport.Get("http://localhost:8081/datasets/health")
+	resp, err := testsupport.Get("http://localhost:8080/datasets/health")
 
 	// then
 	suite.NoError(err)
@@ -93,7 +93,7 @@ func (suite *DatasetControllerAcceptanceTest) TestCreateDataset() {
 	}
 	body, _ := json.Marshal(datasetPayload)
 	// when
-	resp, err := testsupport.Post("http://localhost:8081/datasets", string(body), "application/json")
+	resp, err := testsupport.Post("http://localhost:8080/datasets", string(body), "application/json")
 	// then
 	count, _ := suite.datasetRepo.Count(suite.AcceptanceTest.Ctx)
 	dataset, _ := suite.datasetRepo.FindByLabel(suite.AcceptanceTest.Ctx, "test")
@@ -113,9 +113,9 @@ func (suite *DatasetControllerAcceptanceTest) TestGetAllDatasets() {
 		Label:       "test",
 	}
 	body, _ := json.Marshal(datasetPayload)
-	testsupport.Post("http://localhost:8081/datasets", string(body), "application/json")
+	testsupport.Post("http://localhost:8080/datasets", string(body), "application/json")
 	// when
-	resp, err := testsupport.Get("http://localhost:8081/datasets")
+	resp, err := testsupport.Get("http://localhost:8080/datasets")
 
 	// then
 	suite.NoError(err)
