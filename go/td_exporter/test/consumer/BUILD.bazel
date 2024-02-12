@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "consumer_test",
+    srcs = ["export_message_consumer_test.go"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/message",
+        "//go/td_common/model",
+        "//go/td_common/test/mocks",
+        "//go/td_exporter/consumer",
+        "//go/td_exporter/test/mocks",
+        "@com_github_streadway_amqp//:amqp",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//suite",
+    ],
+)

@@ -25,7 +25,9 @@ use_repo(
     "com_github_robertkrimen_otto",
     "com_github_robfig_cron",
     "org_golang_x_crypto",
-    "com_github_stretchr_testify"
+    "com_github_stretchr_testify",
+    "com_github_docker_go_connections",
+    "com_github_testcontainers_testcontainers_go"
 )
 
 # Python

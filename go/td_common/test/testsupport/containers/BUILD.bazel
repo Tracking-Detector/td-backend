@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "containers",
+    srcs = [
+        "minio_container.go",
+        "mongo_container.go",
+        "rabbitmq_container.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_common/test/testsupport/containers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_docker_go_connections//nat",
+        "@com_github_testcontainers_testcontainers_go//:testcontainers-go",
+        "@com_github_testcontainers_testcontainers_go//wait",
+    ],
+)

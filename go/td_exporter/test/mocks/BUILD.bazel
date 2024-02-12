@@ -1,0 +1,16 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mocks",
+    srcs = [
+        "IConsumer.go",
+        "IExportJob.go",
+        "ReduceFunction.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_exporter/test/mocks",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_common/model",
+        "@com_github_stretchr_testify//mock",
+    ],
+)
