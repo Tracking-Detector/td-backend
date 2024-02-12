@@ -4,6 +4,7 @@ go_test(
     name = "acceptance_test",
     srcs = ["export_consumer_test.go"],
     data = glob(["testdata/**"]),
+    tags = ["integration"],
     deps = [
         "//go/td_common/config",
         "//go/td_common/model",

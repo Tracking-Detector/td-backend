@@ -14,6 +14,7 @@ go_test(
         "user_service_test.go",
     ],
     data = glob(["testdata/**"]),
+    tags = ["unittest"],
     deps = [
         "//go/td_common/message",
         "//go/td_common/model",

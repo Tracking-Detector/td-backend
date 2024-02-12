@@ -20,7 +20,7 @@ jobs:
           path: "~/.cache/bazel"
           key: bazel
       - run: bazel build //...
-  test:
+  unittest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,4 +31,16 @@ jobs:
         with:
           path: "~/.cache/bazel"
           key: bazel
-      - run: bazel test //... --test_tag_filters=-no_test --test_timeout=400 --jobs=1
+      - run: bazel test //... --test_tag_filters=unittest --jobs=auto
+  integrationtests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - name: Mount bazel cache
+        uses: actions/cache@v4
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+      - run: bazel test //... --test_tag_filters=integration --test_timeout=75 --jobs=1

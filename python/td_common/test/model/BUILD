@@ -5,6 +5,7 @@ py_test(
     srcs = [
         "model_test.py",
     ],
+    tags = ["unittest"],
     visibility = ["//visibility:public"],
     deps = ["//python/td_common/model"],
 )
@@ -14,6 +15,7 @@ py_test(
     srcs = [
         "dataset_test.py",
     ],
+    tags = ["unittest"],
     visibility = ["//visibility:public"],
     deps = ["//python/td_common/model"],
 )
@@ -23,6 +25,7 @@ py_test(
     srcs = [
         "training_run_test.py",
     ],
+    tags = ["unittest"],
     visibility = ["//visibility:public"],
     deps = ["//python/td_common/model"],
 )

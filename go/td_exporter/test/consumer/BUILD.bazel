@@ -3,6 +3,7 @@ load("@rules_go//go:def.bzl", "go_test")
 go_test(
     name = "consumer_test",
     srcs = ["export_message_consumer_test.go"],
+    tags = ["unittest"],
     deps = [
         "//go/td_common/config",
         "//go/td_common/message",

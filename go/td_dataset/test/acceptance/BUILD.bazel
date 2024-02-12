@@ -7,6 +7,7 @@ go_test(
         "dataset_metrics_calculation_job_test.go",
     ],
     data = glob(["testdata/**"]),
+    tags = ["integration"],
     deps = [
         "//go/td_common/config",
         "//go/td_common/model",

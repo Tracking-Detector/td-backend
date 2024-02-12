@@ -7,6 +7,7 @@ go_test(
         "internal_export_job_test.go",
     ],
     data = glob(["testdata/**"]),
+    tags = ["unittest"],
     deps = [
         "//go/td_common/model",
         "//go/td_common/test/mocks",

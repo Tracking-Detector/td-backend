@@ -4,6 +4,7 @@ go_test(
     name = "job_test",
     srcs = ["dataset_metrics_calculation_job_test.go"],
     data = glob(["testdata/**"]),
+    tags = ["unittest"],
     deps = [
         "//go/td_common/model",
         "//go/td_common/test/mocks",

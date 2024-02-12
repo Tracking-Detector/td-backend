@@ -5,6 +5,7 @@ py_test(
     srcs = [
         "model_repository_test.py",
     ],
+    tags = ["integration"],
     visibility = ["//visibility:public"],
     deps = [
         "//python/td_common/model",
@@ -20,6 +21,7 @@ py_test(
     srcs = [
         "dataset_repository_test.py",
     ],
+    tags = ["integration"],
     visibility = ["//visibility:public"],
     deps = [
         "//python/td_common/model",
@@ -35,6 +37,7 @@ py_test(
     srcs = [
         "training_run_repository_test.py",
     ],
+    tags = ["integration"],
     visibility = ["//visibility:public"],
     deps = [
         "//python/td_common/model",

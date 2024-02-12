@@ -3,6 +3,7 @@ load("@rules_go//go:def.bzl", "go_test")
 go_test(
     name = "converter_test",
     srcs = ["request_converter_test.go"],
+    tags = ["unittest"],
     deps = [
         "//go/td_common/model",
         "//go/td_exporter/converter",
