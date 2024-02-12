@@ -71,13 +71,10 @@ func (tqc *TestQueueConsumer) Consume(queueName string, expectedMessageCount int
 	}
 }
 
-// Stop stops the TestQueueConsumer.
 func (tqc *TestQueueConsumer) Stop() {
 	tqc.cancelFunc()
-	// Add additional cleanup logic if needed
 }
 
-// WaitForMessages waits for the specified number of messages to be received.
 func (tqc *TestQueueConsumer) WaitForMessages(queueName string, expectedMessageCount int) {
 
 	if _, ok := tqc.QueueMessages[queueName]; !ok {
@@ -93,7 +90,6 @@ func (tqc *TestQueueConsumer) WaitForMessages(queueName string, expectedMessageC
 	log.Printf("ConsumerService finished for queue %s. Received %d messages.", queueName, len(tqc.QueueMessages[queueName]))
 }
 
-// ClearMessages resets the QueueMessages map.
 func (tqc *TestQueueConsumer) ClearMessages() {
 
 	tqc.QueueMessages = make(map[string][]string)
