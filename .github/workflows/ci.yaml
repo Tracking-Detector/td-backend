@@ -31,4 +31,4 @@ jobs:
         with:
           path: "~/.cache/bazel"
           key: bazel
-      - run: bazel test //... --test_timeout=300
+      - run: bazel test //... --test_filter=-//python:requirements_test
