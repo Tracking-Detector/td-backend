@@ -3,6 +3,7 @@ load("@rules_go//go:def.bzl", "go_library")
 go_library(
     name = "testsupport",
     srcs = [
+        "acceptance.go",
         "api.go",
         "consumer.go",
         "utils.go",
@@ -12,5 +13,6 @@ go_library(
     deps = [
         "//go/td_common/model",
         "//go/td_common/queue",
+        "//go/td_common/test/testsupport/containers",
     ],
 )
