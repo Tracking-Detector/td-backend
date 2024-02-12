@@ -6,7 +6,7 @@ compile_pip_requirements(
     extra_args = [
         "--quiet",
     ],
-    tags = ["no_test"],
     requirements_txt = "requirements_lock.txt",
     requirements_windows = "requirements_windows.txt",
+    tags = ["no_test"],
 )

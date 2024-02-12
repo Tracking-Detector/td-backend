@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "acceptance_test",
+    srcs = ["request_controller_test.go"],
+    deps = [
+        "//go/td_common/config",
+        "//go/td_common/model",
+        "//go/td_common/repository",
+        "//go/td_common/service",
+        "//go/td_common/test/testsupport",
+        "//go/td_common/util",
+        "//go/td_request/controller",
+        "@com_github_gofiber_fiber_v2//:fiber",
+        "@com_github_stretchr_testify//suite",
+    ],
+)
