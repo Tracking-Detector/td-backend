@@ -58,4 +58,4 @@ jobs:
           path: "~/.cache/bazel"
           key: bazel
       - run: |
-          bazel run //... --test_tag_filters=publish
+          bazel run //... --run_tag_filters=publish
