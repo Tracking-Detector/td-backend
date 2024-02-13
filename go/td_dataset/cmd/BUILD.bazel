@@ -49,12 +49,13 @@ platform_transition_filegroup(
 oci_tarball(
     name = "tarball",
     image = ":image",
-    repo_tags = ["gcr.io/td_dataset:latest"],
+    repo_tags = ["gcr.io/Tracking/td_dataset:latest"],
 )
 
 oci_push(
     name = "push",
     tags = ["publish"],
+    remote_tags = ["v0.0.1"],
     image = ":image",
-    repository = "gcr.io/Tracking-Detector/td_dataset",
+    repository = "gcr.io/td_dataset",
 )
