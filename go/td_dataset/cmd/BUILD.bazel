@@ -54,6 +54,7 @@ oci_tarball(
 )
 
 oci_push(
+    name = "push",
     tags = ["publish"],
     image = ":image",
     repository = "gcr.io/Tracking-Detector/td_dataset",
