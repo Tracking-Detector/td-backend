@@ -64,4 +64,4 @@ jobs:
           path: "~/.cache/bazel"
           key: bazel
       - run: |
-          bazel run //...:*push
+          bazel run //go/td_dataset/cmd:push
