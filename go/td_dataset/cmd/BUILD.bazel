@@ -56,6 +56,6 @@ oci_tarball(
 oci_push(
     tags = ["publish"],
     image = ":image",
-    repository = "gcr.io/td_dataset",
+    repository = "gcr.io/Tracking-Detector/td_dataset",
     remote_tags = [version]
 )
