@@ -24,38 +24,38 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-pkg_tar(
-    name = "export_layer",
-    srcs = [":cmd"],
-)
+# pkg_tar(
+#     name = "export_layer",
+#     srcs = [":cmd"],
+# )
 
-oci_image(
-    name = "image",
-    base = "@distroless_base",
-    entrypoint = ["/cmd"],
-    tars = [":export_layer"],
-)
+# oci_image(
+#     name = "image",
+#     base = "@distroless_base",
+#     entrypoint = ["/cmd"],
+#     tars = [":export_layer"],
+# )
 
-platform_transition_filegroup(
-    name = "transitioned_image",
-    srcs = [":image"],
-    target_platform = select({
-        "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
-        "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
-    }),
-)
+# platform_transition_filegroup(
+#     name = "transitioned_image",
+#     srcs = [":image"],
+#     target_platform = select({
+#         "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
+#         "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
+#     }),
+# )
 
-oci_tarball(
-    name = "tarball",
-    image = ":image",
-    repo_tags = ["gcr.io/td_export:latest"],
-)
+# oci_tarball(
+#     name = "tarball",
+#     image = ":image",
+#     repo_tags = ["gcr.io/td_export:latest"],
+# )
 
-oci_push(
-    name = "push",
-    tags = ["publish"],
-    image = ":image",
-    repository = "gcr.io/Tracking-Detector/td_export",
-    remote_tags = [version]
-)
+# oci_push(
+#     name = "push",
+#     tags = ["publish"],
+#     image = ":image",
+#     repository = "gcr.io/Tracking-Detector/td_export",
+#     remote_tags = [version]
+# )
 

@@ -32,7 +32,7 @@ pkg_tar(
 
 oci_image(
     name = "image",
-    base = "@distroless_base",
+    base = "@alpine_base",
     entrypoint = ["/cmd"],
     tars = [":dataset_layer"],
 )
@@ -40,7 +40,7 @@ oci_image(
 platform_transition_filegroup(
     name = "transitioned_image",
     srcs = [":image"],
-    target_platform = select({
+    target_platform =  select({
         "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
         "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
     }),
@@ -55,7 +55,7 @@ oci_tarball(
 oci_push(
     name = "push",
     tags = ["publish"],
-    remote_tags = ["v0.0.1"],
+    remote_tags = ["v0.0.2"],
     image = ":image",
     repository = "ghcr.io/tracker-detector/td-backend/td_dataset",
 )
