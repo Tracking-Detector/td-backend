@@ -57,5 +57,5 @@ oci_push(
     tags = ["publish"],
     remote_tags = ["v0.0.1"],
     image = ":image",
-    repository = "gcr.io/td_dataset",
+    repository = "gcr.io/tracking-detector/td-backend/td_dataset",
 )
