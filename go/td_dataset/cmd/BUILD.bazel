@@ -58,5 +58,5 @@ oci_push(
     tags = ["publish"],
     image = ":image",
     repository = "gcr.io/Tracking-Detector/td_dataset",
-    remote_tags = [version]
+    remote_tags = ["latest"]
 )
