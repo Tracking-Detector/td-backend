@@ -3,7 +3,6 @@ load("@rules_go//go:def.bzl", "go_binary", "go_library")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball", "oci_push")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
-version = "0.0.1"
 go_library(
     name = "cmd_lib",
     srcs = ["main.go"],
@@ -58,5 +57,4 @@ oci_push(
     tags = ["publish"],
     image = ":image",
     repository = "gcr.io/Tracking-Detector/td_dataset",
-    remote_tags = ["latest"]
 )
