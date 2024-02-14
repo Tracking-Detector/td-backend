@@ -1,9 +1,8 @@
+load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
 load("@rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_image_index", "oci_push")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
-# load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
-# load("@container_structure_test//:defs.bzl", "container_structure_test")
-# load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
-# load("@rules_pkg//:pkg.bzl", "pkg_tar")
 go_library(
     name = "cmd_lib",
     srcs = ["main.go"],
@@ -24,47 +23,47 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-# pkg_tar(
-#     name = "app_layer",
-#     srcs = [":cmd"],
-#     # If the binary depends on RUNFILES, uncomment the attribute below.
-#     # include_runfiles = True
-# )
+pkg_tar(
+    name = "user_layer",
+    srcs = [":cmd"],
+)
 
-# oci_image(
-#     name = "image",
-#     base = "@alpine",
-#     entrypoint = ["/cmd"],
-#     tars = [":app_layer"],
-# )
+oci_image(
+    name = "image_arm64",
+    base = "@alpine_base",
+    entrypoint = ["/cmd"],
+    tars = [":user_layer"],
+)
 
-# # This is the target that should be released to the target platform
-# platform_transition_filegroup(
-#     name = "transitioned_image",
-#     srcs = [":image"],
-#     target_platform = select({
-#         "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
-#         "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
-#     }),
-# )
+oci_image(
+    name = "image_amd64",
+    base = "@alpine_base",
+    entrypoint = ["/cmd"],
+    tars = [":user_layer"],
+)
 
-# # $ bazel build :tarball
-# # $ docker load --input $(bazel cquery --output=files :tarball)
-# # $ docker run --rm gcr.io/example:latest
-# #   string(
-# # -       "Hello World",
-# # +       "Hello Go",
-# #   )
-# oci_tarball(
-#     name = "tarball",
-#     # Use the image built for the exec platform rather than the target platform
-#     image = ":image",
-#     repo_tags = ["trackingdetector:latest"],
-# )
+oci_image_index(
+    name = "app_image",
+    images = [
+        ":image_arm64",
+        ":image_amd64",
+    ]
+)
 
-# container_structure_test(
-#     name = "test",
-#     configs = ["test.yaml"],
-#     # Use the image built for the exec platform rather than the target platform
-#     image = ":image",
-# )
+platform_transition_filegroup(
+    name = "transitioned_image",
+    srcs = [":app_image"],
+    target_platform =  select({
+        "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
+        "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
+    }),
+)
+
+
+oci_push(
+    name = "push",
+    tags = ["publish"],
+    remote_tags = ["test", "latest"],
+    image = ":transitioned_image",
+    repository = "ghcr.io/tracker-detector/td-backend/td_user",
+)

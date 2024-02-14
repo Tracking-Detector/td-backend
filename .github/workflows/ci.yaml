@@ -65,3 +65,10 @@ jobs:
           key: bazel
       - run: |
           bazel run //go/td_dataset/cmd:push
+          bazel run //go/td_dispatcher/cmd:push
+          bazel run //go/td_download/cmd:push
+          bazel run //go/td_export/cmd:push
+          bazel run //go/td_exporter/cmd:push
+          bazel run //go/td_model/cmd:push
+          bazel run //go/td_request/cmd:push
+          bazel run //go/td_user/cmd:push
