@@ -51,5 +51,5 @@ oci_push(
     tags = ["publish"],
     remote_tags = ["latest"],
     image = ":transitioned_image",
-    repository = "ghcr.io/tracker-detector/td-backend/td_user",
+    repository = "ghcr.io/tracker-detector/td_user",
 )
