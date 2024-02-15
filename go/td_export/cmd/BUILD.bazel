@@ -49,7 +49,7 @@ platform_transition_filegroup(
 oci_push(
     name = "push",
     tags = ["publish"],
-    remote_tags = ["test", "latest"],
+    remote_tags = ["latest"],
     image = ":transitioned_image",
     repository = "ghcr.io/tracker-detector/td-backend/td_export",
 )

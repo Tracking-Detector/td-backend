@@ -1,0 +1,73 @@
+name: CI
+on:
+  workflow_call:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - name: Mount bazel cache
+        uses: actions/cache@v4
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+      - run: bazel build //...
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - name: Mount bazel cache
+        uses: actions/cache@v4
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+      - run: bazel test //... --test_tag_filters=unittest --jobs=auto
+  # integrationtests:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - uses: bazelbuild/setup-bazelisk@v3
+  #     - name: Mount bazel cache
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: "~/.cache/bazel"
+  #         key: bazel
+  #     - run: bazel test //... --test_tag_filters=integration --test_timeout=75 --jobs=1
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [build, unittest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Mount bazel cache
+        uses: actions/cache@v4
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+      - run: |
+          bazel run //go/td_dataset/cmd:push
+          bazel run //go/td_dispatcher/cmd:push
+          bazel run //go/td_download/cmd:push
+          bazel run //go/td_export/cmd:push
+          bazel run //go/td_exporter/cmd:push
+          bazel run //go/td_model/cmd:push
+          bazel run //go/td_request/cmd:push
+          bazel run //go/td_user/cmd:push
