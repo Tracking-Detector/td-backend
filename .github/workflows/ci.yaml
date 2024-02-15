@@ -38,3 +38,4 @@ jobs:
           bazel run //go/td_request/cmd:push -- --tag ${{ github.ref_name }}
           bazel run //go/td_user/cmd:push -- --tag ${{ github.ref_name }}
           bazel run //go/td_public/cmd:push -- --tag ${{ github.ref_name }}
+          bazel run //go/td_dashboard/cmd:push -- --tag ${{ github.ref_name }}
