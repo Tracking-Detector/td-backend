@@ -1,0 +1,19 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sections",
+    srcs = [
+        "contact_section_templ.go",
+        "feature_section_templ.go",
+        "hero_section_templ.go",
+        "installation_guide_templ.go",
+        "product_section_templ.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/views/components/sections",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_public/model",
+        "//go/td_public/views/components/cards",
+        "@com_github_a_h_templ//:templ",
+    ],
+)

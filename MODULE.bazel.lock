@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 3,
-  "moduleFileHash": "cb81c3e293db22c4f221424f7550c2a260873b3c9d74bf4f8ffd96e23a3551d6",
+  "moduleFileHash": "daa13cb86cce89cc56e113abe49c0c68002046ebec6166dd430a03316e076032",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -73,7 +73,8 @@
             "org_golang_x_crypto": "org_golang_x_crypto",
             "com_github_stretchr_testify": "com_github_stretchr_testify",
             "com_github_docker_go_connections": "com_github_docker_go_connections",
-            "com_github_testcontainers_testcontainers_go": "com_github_testcontainers_testcontainers_go"
+            "com_github_testcontainers_testcontainers_go": "com_github_testcontainers_testcontainers_go",
+            "com_github_a_h_templ": "com_github_a_h_templ"
           },
           "devImports": [],
           "tags": [
@@ -99,7 +100,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 39,
+            "line": 40,
             "column": 23
           },
           "imports": {},
@@ -113,7 +114,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 40,
+                "line": 41,
                 "column": 17
               }
             }
@@ -127,7 +128,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 44,
+            "line": 45,
             "column": 20
           },
           "imports": {
@@ -146,7 +147,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 45,
+                "line": 46,
                 "column": 10
               }
             }
@@ -160,7 +161,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 55,
+            "line": 56,
             "column": 20
           },
           "imports": {
@@ -182,7 +183,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 57,
+                "line": 58,
                 "column": 9
               }
             }
@@ -2183,10 +2184,10 @@
         "accumulatedFileDigests": {
           "@@gazelle~0.35.0//:go.mod": "48dc6e771c3028ee1c18b9ffc81e596fd5f6d7e0016c5ef280e30f2821f60473",
           "@@gazelle~0.35.0//:go.sum": "7c4460e8ecb5dd8691a51d4fa2e9e4751108b933636497ce46db499fc2e7a88d",
-          "@@//go:go.mod": "b0eb1afc9212e5533f2c81d3ee79b96e727465a84f3b784b072b1d6a8ff3de9c",
+          "@@//go:go.mod": "6067b621c1f5cb6e7c0262f549e752a5f47431b12933456a83e7579f9aab4237",
           "@@rules_go~0.45.1//:go.mod": "de22304b720f7f61350ec1c9739de6c0a1b1103fd22bfeb6e92c6c843ddc6d6e",
           "@@rules_go~0.45.1//:go.sum": "d56fdb19b21a5f12bcf625c49432371ac39c2def0f564098fbda107f7c080f40",
-          "@@//go:go.sum": "f5402aebaa28a864df5cd587ba3cfe83022116a8e18fe67e193492d261afc65a"
+          "@@//go:go.sum": "fa14423e9271fd057de5d182fe9a4683d31e155c4ed400f420983723645d56e6"
         },
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -3560,6 +3561,7 @@
             "attributes": {
               "name": "gazelle~0.35.0~go_deps~bazel_gazelle_go_repository_config",
               "importpaths": {
+                "com_github_a_h_templ": "github.com/a-h/templ",
                 "com_github_docker_go_connections": "github.com/docker/go-connections",
                 "com_github_gofiber_fiber_v2": "github.com/gofiber/fiber/v2",
                 "com_github_google_uuid": "github.com/google/uuid",
@@ -3691,6 +3693,22 @@
               "version": "v0.15.0"
             }
           },
+          "com_github_a_h_templ": {
+            "bzlFile": "@@gazelle~0.35.0//internal:go_repository.bzl",
+            "ruleClassName": "go_repository",
+            "attributes": {
+              "name": "gazelle~0.35.0~go_deps~com_github_a_h_templ",
+              "importpath": "github.com/a-h/templ",
+              "build_directives": [],
+              "build_file_generation": "auto",
+              "build_extra_args": [],
+              "patches": [],
+              "patch_args": [],
+              "sum": "h1:8YyLvyUtf0/IE2nIwZ62Z/m2o2NqwhnMynzOL78Lzbk=",
+              "replace": "",
+              "version": "v0.2.543"
+            }
+          },
           "com_github_valyala_fasthttp": {
             "bzlFile": "@@gazelle~0.35.0//internal:go_repository.bzl",
             "ruleClassName": "go_repository",
@@ -3726,6 +3744,7 @@
         },
         "moduleExtensionMetadata": {
           "explicitRootModuleDirectDeps": [
+            "com_github_a_h_templ",
             "com_github_docker_go_connections",
             "com_github_gofiber_fiber_v2",
             "com_github_google_uuid",

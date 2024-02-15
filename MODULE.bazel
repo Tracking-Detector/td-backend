@@ -32,7 +32,8 @@ use_repo(
     "org_golang_x_crypto",
     "com_github_stretchr_testify",
     "com_github_docker_go_connections",
-    "com_github_testcontainers_testcontainers_go"
+    "com_github_testcontainers_testcontainers_go",
+    "com_github_a_h_templ"
 )
 
 # Python

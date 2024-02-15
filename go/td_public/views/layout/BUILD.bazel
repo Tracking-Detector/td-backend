@@ -1,0 +1,16 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "layout",
+    srcs = [
+        "base_templ.go",
+        "footer_templ.go",
+        "navbar_templ.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/views/layout",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_public/model",
+        "@com_github_a_h_templ//:templ",
+    ],
+)

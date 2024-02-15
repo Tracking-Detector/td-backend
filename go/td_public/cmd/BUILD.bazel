@@ -1,0 +1,63 @@
+load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+go_library(
+    name = "cmd_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/cmd",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//go/td_public/handler",
+        "//go/td_public/resources",
+        "@com_github_gofiber_fiber_v2//:fiber",
+    ],
+)
+
+go_binary(
+    name = "cmd",
+    embed = [":cmd_lib"],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "public_layer",
+    deps = [
+        "//go/td_public/assets:assets_layer",
+        "//go/td_public/static:static_layer",
+    ],
+    srcs = [":cmd"],
+)
+
+oci_image(
+    name = "image",
+    base = "@alpine_base",
+    entrypoint = ["/cmd"],
+    tars = [":public_layer"],
+)
+
+
+
+platform_transition_filegroup(
+    name = "transitioned_image",
+    srcs = [":image"],
+    target_platform = select({
+        "@platforms//cpu:arm64": "@rules_go//go/toolchain:linux_arm64",
+        "@platforms//cpu:x86_64": "@rules_go//go/toolchain:linux_amd64",
+    }),
+)
+
+oci_tarball(
+     name = "tarball",
+    image = ":transitioned_image",
+    repo_tags = ["td_public:latest"],
+)
+
+oci_push(
+    name = "push",
+    image = ":transitioned_image",
+    remote_tags = ["latest"],
+    repository = "ghcr.io/tracker-detector/td_public",
+    tags = ["publish"],
+)

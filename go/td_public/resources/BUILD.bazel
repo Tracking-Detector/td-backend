@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "resources",
+    srcs = ["home_resource_loader.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/resources",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_public/model",
+        "@com_github_a_h_templ//:templ",
+    ],
+)

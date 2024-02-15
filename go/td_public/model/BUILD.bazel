@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "model",
+    srcs = [
+        "contact.go",
+        "features.go",
+        "hero.go",
+        "home.go",
+        "installation_guide.go",
+        "navbar.go",
+        "products.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/model",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_a_h_templ//:templ"],
+)

@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "cards",
+    srcs = ["product_card_templ.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_public/views/components/cards",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_public/model",
+        "@com_github_a_h_templ//:templ",
+    ],
+)
