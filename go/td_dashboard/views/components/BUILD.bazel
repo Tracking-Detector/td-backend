@@ -1,0 +1,26 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "components",
+    srcs = [
+        "alert_templ.go",
+        "button_templ.go",
+        "card_templ.go",
+        "divider_templ.go",
+        "empty_templ.go",
+        "icons_templ.go",
+        "input_templ.go",
+        "loading_templ.go",
+        "popup_templ.go",
+        "spacer_templ.go",
+        "table_templ.go",
+        "text_templ.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/views/components",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_dashboard/models",
+        "//go/td_dashboard/views",
+        "@com_github_a_h_templ//:templ",
+    ],
+)

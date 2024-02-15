@@ -1,0 +1,27 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "dataset_handler.go",
+        "experiment_handler.go",
+        "export_handler.go",
+        "home_handler.go",
+        "model_handler.go",
+        "user_handler.go",
+        "util.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/handlers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_dashboard/models",
+        "//go/td_dashboard/services",
+        "//go/td_dashboard/views/components",
+        "//go/td_dashboard/views/layouts",
+        "//go/td_dashboard/views/pages/dataset",
+        "//go/td_dashboard/views/pages/home",
+        "@com_github_a_h_templ//:templ",
+        "@com_github_gofiber_fiber_v2//:fiber",
+        "@com_github_gofiber_fiber_v2//middleware/adaptor",
+    ],
+)

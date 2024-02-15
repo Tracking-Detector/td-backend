@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "models",
+    srcs = [
+        "api_response.go",
+        "dataset.go",
+        "status.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/models",
+    visibility = ["//visibility:public"],
+)

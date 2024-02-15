@@ -5,6 +5,7 @@ go 1.21.6
 require (
 	github.com/a-h/templ v0.2.543
 	github.com/docker/go-connections v0.5.0
+	github.com/go-resty/resty/v2 v2.11.0
 	github.com/gofiber/fiber/v2 v2.52.0
 	github.com/google/uuid v1.6.0
 	github.com/minio/minio-go/v7 v7.0.67

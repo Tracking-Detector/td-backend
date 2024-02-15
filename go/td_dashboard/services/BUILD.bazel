@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "services",
+    srcs = [
+        "dataset_service.go",
+        "rest_service.go",
+        "status_service.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/services",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_dashboard/config",
+        "//go/td_dashboard/models",
+        "@com_github_go_resty_resty_v2//:resty",
+    ],
+)

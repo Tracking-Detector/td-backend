@@ -1,0 +1,8 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "views",
+    srcs = ["utils.go"],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/views",
+    visibility = ["//visibility:public"],
+)

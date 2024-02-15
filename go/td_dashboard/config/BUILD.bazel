@@ -1,0 +1,11 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "config",
+    srcs = [
+        "env.go",
+        "setup.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/config",
+    visibility = ["//visibility:public"],
+)

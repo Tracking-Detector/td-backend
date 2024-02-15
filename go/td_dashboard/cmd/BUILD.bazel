@@ -1,21 +1,17 @@
 load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
 load("@rules_go//go:def.bzl", "go_binary", "go_library")
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
 go_library(
     name = "cmd_lib",
     srcs = ["main.go"],
-    importpath = "github.com/Tracking-Detector/td-backend/go/td_dataset/cmd",
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/cmd",
     visibility = ["//visibility:private"],
     deps = [
-        "//go/td_common/config",
-        "//go/td_common/repository",
-        "//go/td_common/service",
-        "//go/td_common/util",
-        "//go/td_dataset/controller",
-        "//go/td_dataset/job",
-        "@com_github_robfig_cron//:cron",
+        "//go/td_dashboard/handlers",
+        "//go/td_dashboard/services",
+        "@com_github_gofiber_fiber_v2//:fiber",
     ],
 )
 
@@ -26,15 +22,18 @@ go_binary(
 )
 
 pkg_tar(
-    name = "dataset_layer",
+    name = "dashboard_layer",
     srcs = [":cmd"],
+    deps = [
+        "//go/td_dashboard/static:static_layer",
+    ],
 )
 
 oci_image(
     name = "image",
     base = "@alpine_base",
     entrypoint = ["/cmd"],
-    tars = [":dataset_layer"],
+    tars = [":dashboard_layer"],
 )
 
 platform_transition_filegroup(
@@ -46,10 +45,17 @@ platform_transition_filegroup(
     }),
 )
 
+oci_tarball(
+    name = "tarball",
+    image = ":transitioned_image",
+    repo_tags = ["td_dashboard:latest"],
+)
+
 oci_push(
     name = "push",
     image = ":transitioned_image",
     remote_tags = ["latest"],
-    repository = "ghcr.io/tracker-detector/td_dataset",
+    repository = "ghcr.io/tracker-detector/td_dashboard",
     tags = ["publish"],
 )
+

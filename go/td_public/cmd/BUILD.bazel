@@ -23,11 +23,11 @@ go_binary(
 
 pkg_tar(
     name = "public_layer",
+    srcs = [":cmd"],
     deps = [
         "//go/td_public/assets:assets_layer",
         "//go/td_public/static:static_layer",
     ],
-    srcs = [":cmd"],
 )
 
 oci_image(
@@ -36,8 +36,6 @@ oci_image(
     entrypoint = ["/cmd"],
     tars = [":public_layer"],
 )
-
-
 
 platform_transition_filegroup(
     name = "transitioned_image",
@@ -49,7 +47,7 @@ platform_transition_filegroup(
 )
 
 oci_tarball(
-     name = "tarball",
+    name = "tarball",
     image = ":transitioned_image",
     repo_tags = ["td_public:latest"],
 )

@@ -1,0 +1,16 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "layouts",
+    srcs = [
+        "dashboard_templ.go",
+        "navbar_templ.go",
+    ],
+    importpath = "github.com/Tracking-Detector/td-backend/go/td_dashboard/views/layouts",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go/td_dashboard/config",
+        "//go/td_dashboard/views/components",
+        "@com_github_a_h_templ//:templ",
+    ],
+)
