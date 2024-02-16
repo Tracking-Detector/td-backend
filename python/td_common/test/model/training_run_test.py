@@ -48,3 +48,7 @@ class TestTrainingRun(unittest.TestCase):
         self.assertEqual(training_run_json['batchSize'], training_run.BatchSize)
         self.assertEqual(training_run_json['epochs'], training_run.Epochs)
 
+
+
+if __name__ == '__main__':
+    unittest.main()

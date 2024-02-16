@@ -13,7 +13,6 @@ assets:
 generate:
 	@templ generate
 
-
 test:
 	go test ./...
 

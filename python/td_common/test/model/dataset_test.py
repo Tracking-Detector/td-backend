@@ -28,3 +28,6 @@ class TestDataset(unittest.TestCase):
         self.assertEqual(dataset_json['name'], dataset.Name)
         self.assertEqual(dataset_json['label'], dataset.Label)
         self.assertEqual(dataset_json['description'], dataset.Description)
+
+if __name__ == '__main__':
+    unittest.main()

@@ -2,7 +2,7 @@ from pymongo.database import Database
 
 from python.td_common.repository.base_repository import BaseRepository
 from python.td_common.model.training_run import TrainingRun
-import python.td_common.config as config
+import python.td_common.config.env as config
 
 class TrainingRunRepository(BaseRepository):
     def __init__(self, db: Database):

@@ -32,4 +32,6 @@ class TestModel(unittest.TestCase):
         self.assertEqual(model_json['dims'], model.Dims)
         self.assertEqual(model_json['tfLayers'], model.TensorflowLayers)
 
-    
+
+if __name__ == '__main__':
+    unittest.main()

@@ -44,3 +44,6 @@ class TestRepositoryAcceptance:
         # cleanup
         repository_instance.delete_by_id("id")
         assert repository_instance.find_by_id("id") is None
+
+if __name__ == '__main__':
+    pytest.main([__file__])

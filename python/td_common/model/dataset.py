@@ -38,6 +38,8 @@ class DataSetMetrics:
     
     @staticmethod
     def from_json(json):
+        if json is None:
+            return None
         return DataSetMetrics(
             Total=json['total'],
             ReducerMetric=[ReducerMetric.from_json(rm) for rm in json['reducerMetric']]
@@ -67,5 +69,5 @@ class Dataset:
             Name=json['name'],
             Label=json['label'],
             Description=json['description'],
-            Metrics=DataSetMetrics.from_json(json['metrics']) if json['metrics'] else None
+            Metrics=DataSetMetrics.from_json(json['metrics']) if 'metrics' in json else None
         )

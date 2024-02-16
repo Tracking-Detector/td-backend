@@ -1,7 +1,7 @@
 from pymongo.database import Database
 from python.td_common.repository.base_repository import BaseRepository
 from python.td_common.model.model import Model
-import python.td_common.config as config
+import python.td_common.config.env as config
 
 class ModelRepository(BaseRepository):
     def __init__(self, db: Database):
